@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home</title>
+</head>
+<body STYLE="background-color: lightgray">
+
+<h1 STYLE="text-align: center;position:relative;top:10px" > Welcome to the Simple Twitter</h1>
+<form action="/reg">
+    <input type="submit" value="Registration" class="btn btn-lg btn-primary" STYLE="float: right;position: relative;right:10px"/>
+</form>
+
+<form action="/login">
+    <input type="submit" value="Login" class="btn btn-lg btn-primary" STYLE="float: right;position: relative;right:20px"/>
+</form>
+
+<br><br><br>
+
+<div  STYLE="display: flex; ">
+
+    <div  STYLE="display: inline">
+
+        <h4> Member List </h4>
+        <br>
+        <table class = "table table-striped" STYLE="width:100px">
+            <tr>
+                <th> Username</th>
+            </tr>
+            <tr th:each="User : ${all}">
+                <td th:text="${User.username}"></td>
+                <!--            <td th:text="${User.password}"></td>-->
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <div  STYLE="display: inline;position:absolute;left:30%">
+        <table class = "table table-striped">
+            <tr >
+                <th style="text-align: center"> Twittes of Random users</th>
+
+            </tr>
+            <tr>
+                <th> Username</th>
+                <th> Twittes</th>
+            </tr>
+            <tr th:each="User : ${all}">
+                <td th:text="${User.username}"></td>
+                <td th:text="${User.twittes}"></td>
+
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

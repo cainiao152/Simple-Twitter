@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home</title>
+</head>
+<body STYLE="background-color: lightgray">
+
+
+
+<h1 STYLE="text-align: center;position:relative;top:10px"> Welcome to the Simple Twitter</h1>
+
+<p th:text="'Welcome  ' + ${user.username}" STYLE="text-align: right;right:10px; font-size: 150%"/>
+
+<form action="/">
+    <input type="submit" value="Log Out" class="btn btn-lg btn-primary" STYLE="float: right;position: relative;right:20px"/>
+</form>
+<br><br><br>
+
+
+<div STYLE="display: flex ">
+
+    <div STYLE="display: inline" >
+        <h4> Member List </h4>
+        <br>
+        <table class = "table table-striped" STYLE="width:100px">
+            <tr>
+                <th> Username</th>
+            </tr>
+            <tr th:each="User : ${all}">
+                <td th:text="${User.username}"></td>
+                <!--            <td th:text="${User.password}"></td>-->
+                <form  th:action="@{/follow}"  th:object="${follow}" method="post" class="form-signin" >
+                    <div class="form-group">
+                            <input type="hidden" name="username" th:value="${User.username}">
+                        <td><input type="submit" value="Follow" class="btn btn-lg btn-primary"/></td>
+                    </div>
+                </form>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div STYLE="display: inline;position:absolute;left:30%;width:150px">
+        <form action="#" th:action="@{/index}"  th:object="${twittes}" method="post" class="form-signin" >
+            <div class="form-group">
+                <p>Twittes: <input type="text"  th:field="*{username}"class="form-control"/></p>
+
+                <!--    <p>Password: <input type="passwordconfirm" th:field="*{passwordconfirm}" /></p>-->
+            </div>
+
+
+            <p><input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit" /> </p>
+        </form>
+
+    </div>
+    <br><br><br><br><br>
+
+    <div STYLE="position: absolute;top:50%;left:30%">
+        <table class = "table table-striped">
+            <tr >
+                <th style="text-align: center" th:text="'Twittes of ' + ${user.username}" />
+
+            </tr>
+            <tr>
+                <th> Username</th>
+                <th> Twittes</th>
+            </tr>
+            <tr>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.twittes}"></td>
+
+            </tr>
+        </table>
+
+    </div>
+
+    <div  STYLE="position: absolute;top:80%;left:30%">
+        <table class = "table table-striped">
+            <tr >
+                <th style="text-align: center" th:text="'Twittes of ' + ${user.username}+ ' followed user' "/>
+
+            </tr>
+            <tr>
+                <th> Username</th>
+                <th> Twittes</th>
+            </tr>
+            <tr th:each="User : ${followed}">
+                <td th:text="${User.username}"></td>
+                <td th:text="${User.twittes}"></td>
+
+            </tr>
+        </table>
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

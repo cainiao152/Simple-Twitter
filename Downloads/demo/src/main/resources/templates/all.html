@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>
+    <h2> Member List </h2>
+
+    <table class = "table table-striped">
+        <tr>
+            <th> Username</th>
+            <th> Password</th>
+        </tr>
+        <tr th:each="User : ${all}">
+            <td th:text="${User.username}"></td>
+            <td th:text="${User.password}"></td>
+        </tr>
+
+    </table>
+</h2>
+
+<table class = "table table-striped">
+    <tr>
+        <th> Twittes of Changzhou Cai</th>
+
+    </tr>
+    <tr th:each="String : ${twittes}">
+        <td th:text="${String}"></td>
+
+    </tr>
+
+</table>
+
+
+
+</body>
+</html>

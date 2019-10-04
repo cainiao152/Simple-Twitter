@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Registration</title>
+</head>
+<body STYLE="background-color: lightgray">
+<body>
+
+<h1   STYLE="text-align: center;position:relative;top:50px"><a href="/">Welcome to the Simple Twitter</a> </h1>
+<br><br><br><br><br><br>
+
+<div class="container" STYLE="color: black; width:350px" >
+
+    <form action="/index" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin" >
+        <h2 class="form-signin-heading" STYLE="text-align: center">Create your account</h2>
+        <div class="form-group">
+            <p>Username: <input type="text" th:field="*{username}" class="form-control"/></p>
+            <p style="color:red" th:text="${message1}" />
+            <p>Password: <input type="password" th:field="*{password}" class="form-control"/></p>
+            <p style="color:red" th:text="${message2}" />
+            <p>Password Confirmation: <input type="password" th:field="*{passwordconfirm}" class="form-control"/></p>
+            <p style="color:red" th:text="${message3}" />
+        </div>
+
+
+        <p><input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit" /> </p>
+    </form>
+    <form action="/login">
+        <input type="submit" href="/login" class="btn btn-lg btn-primary btn-block" value="Login" />
+    </form>
+</div>
+
+
+
+</body>
+</html>
